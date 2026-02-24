@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Tajikistan | Official Travel & Booking</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0ea5e9;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --accent: #f59e0b;
+            --success: #10b981;
+        }
+
+        * { box-sizing: border-box; transition: all 0.3s ease; }
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            margin: 0; 
+            background: var(--light); 
+            color: var(--dark);
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        header { 
+            background: rgba(15, 23, 42, 0.95); 
+            backdrop-filter: blur(10px);
+            color: white; 
+            padding: 20px 8%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
+        .logo { font-size: 24px; font-weight: 800; color: var(--primary); text-decoration: none; }
+        nav a { color: #cbd5e1; text-decoration: none; margin-left: 25px; font-weight: 600; font-size: 15px; }
+        nav a:hover { color: var(--primary); }
+
+        /* Hero Section */
+        .hero { 
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), 
+                        url('https://images.unsplash.com/photo-1544985338-fc565257995a?auto=format&fit=crop&w=1600&q=80'); 
+            background-size: cover; 
+            background-position: center;
+            height: 70vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            color: white; 
+            text-align: center; 
+            padding: 0 20px;
+        }
+        .hero h1 { font-size: clamp(40px, 6vw, 70px); margin: 0; font-weight: 800; }
+        .hero p { font-size: clamp(18px, 2vw, 24px); margin: 20px 0 30px; max-width: 800px; color: #e2e8f0; }
+
+        /* Main Container */
+        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+
+        /* Pricing Calculator */
+        .card-panel { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 24px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05); 
+            margin-bottom: 60px;
+            margin-top: -100px;
+            position: relative;
+            z-index: 10;
+        }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        label { display: block; margin-bottom: 10px; font-weight: 600; font-size: 14px; color: #64748b; }
+        select, input, textarea { 
+            width: 100%; padding: 14px; border: 2px solid #f1f5f9; border-radius: 12px; 
+            font-size: 16px; font-family: inherit; outline: none; background: #f8fafc;
+        }
+        select:focus, input:focus { border-color: var(--primary); background: white; }
+
+        /* Booking Section */
+        .booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 40px; }
+        .info-box h2 { font-size: 32px; margin-bottom: 20px; }
+        .info-box p { color: #64748b; font-size: 18px; }
+        
+        .btn-primary { 
+            background: var(--primary); color: white; border: none; padding: 16px 32px; 
+            border-radius: 12px; font-size: 18px; font-weight: 700; cursor: pointer; width: 100%;
+        }
+        .btn-primary:hover { background: #0284c7; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(14, 165, 233, 0.3); }
+
+        /* Map Section */
+        .map-container { margin-top: 60px; border-radius: 24px; overflow: hidden; height: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+
+        /* Floating WhatsApp */
+        .whatsapp-float { 
+            position: fixed; bottom: 30px; right: 30px; 
+            background: #25d366; color: white; width: 65px; height: 65px; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); z-index: 2000; text-decoration: none; 
+            font-size: 30px;
+        }
+
+        footer { background: var(--dark); color: #94a3b8; text-align: center; padding: 60px 20px; margin-top: 80px; }
+
+        #success-msg { 
+            display: none; background: #ecfdf5; color: #065f46; 
+            padding: 20px; border-radius: 12px; margin-top: 20px; font-weight: 600; 
+        }
+
+        @media (max-width: 768px) {
+            .booking-grid { grid-template-columns: 1fr; }
+            header { padding: 15px 5%; }
+            nav { display: none; } /* Соддатар барои мобил */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="#" class="logo">TAJIKISTAN.</a>
+    <nav>
+        <a href="#destinations">Destinations</a>
+        <a href="#planner">Budget Planner</a>
+        <a href="#booking">Book Now</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Roof of the World</h1>
+    <p>Experience the untouched beauty of the Pamirs and the legendary hospitality of the Tajik people.</p>
+</section>
+
+<div class="container">
+    <div class="card-panel" id="planner">
+        <h2 style="margin-top:0">Quick Budget Estimate</h2>
+        <div class="grid-3">
+            <div>
+                <label>Choose Destination</label>
+                <select id="price-dest">
+                    <option value="50">Iskanderkul Lake ($50/day)</option>
+                    <option value="120">Pamir Highway ($120/day)</option>
+                    <option value="40">Hisar Fortress ($40/day)</option>
+                    <option value="60">Fann Mountains ($60/day)</option>
+                </select>
+            </div>
+            <div>
+                <label>Number of Days</label>
+                <input type="number" id="num-days" value="1" min="1">
+            </div>
+            <div>
+                <label>Total Price (USD)</label>
+                <div id="total-val" style="font-size: 28px; font-weight: 800; color: var(--success);">$50</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="booking-grid" id="booking">
+        <div class="info-box">
+            <span style="color:var(--primary); font-weight:800; text-transform:uppercase">Premium Tours</span>
+            <h2>Book Your Private Adventure</h2>
+            <p>Our expert local guides will take you beyond the tourist trails. From 4x4 Pamir expeditions to cultural homestays in the Fann Mountains.</p>
+            <ul style="list-style: none; padding: 0; margin-top: 30px;">
+                <li style="margin-bottom: 15px;">✅ 24/7 Adventure Support</li>
+                <li style="margin-bottom: 15px;">✅ Certified English-Speaking Guides</li>
+                <li style="margin-bottom: 15px;">✅ Custom Itineraries</li>
+            </ul>
+        </div>
+
+        <div class="card-panel" style="margin-top: 0;">
+            <form id="booking-form">
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="user-name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="user-email" placeholder="john@example.com" required>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top:15px">
+                    <label>Select Tour Package</label>
+                    <select id="user-tour">
+                        <option>Pamir Highway Expedition</option>
+                        <option>Fann Mountains Trek</option>
+                        <option>Cultural Silk Road Tour</option>
+                        <option>Iskanderkul Day Trip</option>
+                    </select>
+                </div>
+                <div class="form-group" style="margin-top:15px">
+                    <label>Preferred Date</label>
+                    <input type="date" id="user-date" required>
+                </div>
+                <div class="form-group" style="margin-top:15px; margin-bottom: 25px;">
+                    <label>Message (Optional)</label>
+                    <textarea id="user-msg" rows="3" placeholder="Tell us about your group..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Send Booking Request</button>
+            </form>
+            <div id="success-msg">Success! Our team will contact you shortly via email.</div>
+        </div>
+    </div>
+
+    <div class="map-container">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1000!2d68.78!3d38.56!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzg1JzM2LjAiTiA2OMKwNDYnNDguMCJF!5e0!3m2!1sen!2stj!4v1600000000000" 
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 Tajikistan Travel Hub. High-quality tourism services.</p>
+</footer>
+
+<a href="https://wa.me/992900000000" class="whatsapp-float" target="_blank">
+    <span>💬</span>
+</a>
+
+<script>
+    // Ҳисобкунаки нарх (Calculator)
+    const priceDest = document.getElementById('price-dest');
+    const numDays = document.getElementById('num-days');
+    const totalVal = document.getElementById('total-val');
+
+    function updatePrice() {
+        const total = priceDest.value * numDays.value;
+        totalVal.innerText = `$${total}`;
+    }
+
+    priceDest.addEventListener('change', updatePrice);
+    numDays.addEventListener('input', updatePrice);
+
+    // Формаи фармоиш (Booking Form)
+    document.getElementById('booking-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('user-name').value;
+        
+        this.style.display = 'none';
+        const success = document.getElementById('success-msg');
+        success.style.display = 'block';
+        success.innerText = `Thank you, ${name}! Your request for Tajikistan adventure has been sent. Check your email soon!`;
+    });
+</script>
+
+</body>
+</html>
